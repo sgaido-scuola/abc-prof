@@ -41,15 +41,16 @@
         display:flex;flex-direction:column}
 
   /* header */
-  .pagehead{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;min-height:50px}
-  .bubbles{justify-self:start;width:clamp(104px,29vw,200px);aspect-ratio:540/217;
+  .pagehead{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;min-height:46px}
+  .bubbles{flex:0 0 auto;width:clamp(104px,29vw,200px);aspect-ratio:540/217;
            background:var(--img-bubbles) left center/contain no-repeat}
-  .wordmark{justify-self:center;width:clamp(66px,16vw,104px);aspect-ratio:240/90;
+  .wordmark{flex:0 0 auto;align-self:center;width:clamp(66px,16vw,104px);aspect-ratio:240/90;
             background:var(--img-wordmark) center/contain no-repeat}
-  .ls{justify-self:end;width:clamp(46px,11.5vw,72px);aspect-ratio:240/199;
+  .head-right{display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex:0 0 auto}
+  .ls{flex:0 0 auto;width:clamp(46px,11.5vw,72px);aspect-ratio:240/199;
       background:var(--img-ls) center/contain no-repeat}
-  .corso{align-self:flex-end;text-align:right;font-style:italic;font-weight:700;
-         color:var(--ink-soft);line-height:1.04;font-size:clamp(.95rem,4.2vw,1.35rem);margin-top:4px}
+  .corso{text-align:right;font-style:italic;font-weight:700;
+         color:var(--ink-soft);line-height:1.04;font-size:clamp(.92rem,3.6vw,1.2rem)}
 
   /* gold banner */
   .banner{background:var(--banner);border-top:1px solid var(--banner-edge);border-bottom:1px solid var(--banner-edge);
@@ -80,11 +81,13 @@
 
   /* contacts */
   .contact-box{background:var(--banner);border:1px solid var(--banner-edge);border-radius:6px;
-       padding:clamp(22px,6vw,40px) clamp(18px,5vw,34px);margin:clamp(14px,4vw,26px) 0;text-align:center}
-  .contact-box .person+.person{margin-top:clamp(22px,6vw,40px)}
-  .contact-box p{font-size:clamp(1.02rem,4.4vw,1.16rem);line-height:1.5;color:var(--ink-soft)}
+       padding:clamp(20px,5vw,40px) clamp(14px,3.5vw,34px);margin:clamp(14px,4vw,26px) 0;text-align:center}
+  .contact-box .person+.person{margin-top:clamp(20px,5vw,40px)}
+  .contact-box p{font-size:clamp(1rem,4.2vw,1.16rem);line-height:1.45;color:var(--ink-soft)}
   .contact-box .name{color:var(--ink)} .contact-box .name b{font-weight:800}
-  .contact-box .mail{word-break:break-word}
+  .contact-box .role{margin-bottom:.35em}
+  .contact-box .mail{font-size:clamp(.9rem,3.7vw,1.12rem);overflow-wrap:break-word}
+  .nowrap{white-space:nowrap}
 
   /* footer */
   .footer{margin-top:auto;padding-top:clamp(8px,2.4vw,24px);text-align:center}
@@ -125,20 +128,18 @@
     .bubbles{width:clamp(132px,11vw,178px)}
     .wordmark{width:clamp(78px,6.5vw,104px)}
     .ls{width:clamp(50px,4.2vw,68px)}
-    .corso{font-size:1.12rem;line-height:1.02;margin-top:2px}
+    .corso{font-size:1.05rem}
     .banner{margin-left:calc(-1 * clamp(48px,7vw,120px));margin-right:calc(-1 * clamp(48px,7vw,120px));
-            padding:clamp(14px,2vh,22px) clamp(48px,7vw,120px);margin-top:clamp(10px,1.6vh,20px)}
+            padding:clamp(14px,2vh,22px) clamp(48px,7vw,120px);margin-top:clamp(12px,1.8vh,22px)}
     .banner h1{font-size:clamp(2.1rem,3.6vw,3.1rem)}
     .banner .sub{font-size:clamp(1.3rem,2.3vw,1.9rem)}
     .body{max-width:1180px;width:100%;margin-left:auto;margin-right:auto}
-    .h-section,.h-step{font-size:clamp(1.5rem,2.2vw,2rem)}
-    .h-step{margin-top:0}
+    .h-section,.h-step{font-size:clamp(1.5rem,2.2vw,2rem);margin-top:clamp(8px,1.4vh,18px)}
     p.lead{font-size:clamp(1.12rem,1.35vw,1.32rem)}
     ul.flat>li,ol.steps>li{font-size:clamp(1.1rem,1.3vw,1.3rem)}
-    /* two-column flow so the content fills the page width */
-    .two-col{column-count:2;column-gap:clamp(40px,5vw,80px)}
-    .two-col .h-section,.two-col .h-step{column-span:all}
-    .two-col p.lead,.two-col li{break-inside:avoid}
+    /* two columns done on the LISTS / paragraph wrapper (no column-span: avoids overlap bugs) */
+    .body ul.flat,.leadcols{column-count:2;column-gap:clamp(40px,5vw,80px)}
+    .body ul.flat>li,.leadcols p.lead{break-inside:avoid}
     /* contacts side by side */
     .contact-box{display:flex;gap:clamp(30px,5vw,70px);text-align:left}
     .contact-box .person{flex:1;margin:0}
@@ -154,13 +155,14 @@
     <div class="track" id="track">
       <!-- P1 CHI SIAMO -->
 <section class="page"><div class="card">
-  <div class="pagehead"><span class="bubbles" aria-hidden="true"></span><span class="wordmark" role="img" aria-label="ABC PROF!"></span><span class="ls" role="img" aria-label="Liceo Scientifico Baldessano-Roccati"></span></div>
-  <div class="corso">corso di<br>formazione</div>
+  <div class="pagehead"><span class="bubbles" aria-hidden="true"></span><span class="wordmark" role="img" aria-label="ABC PROF!"></span><div class="head-right"><span class="ls" role="img" aria-label="Liceo Scientifico Baldessano-Roccati"></span><span class="corso">corso di formazione</span></div></div>
   <div class="banner"><h1><span class="nb">La co-progettazione</span> didattica interdisciplinare</h1><div class="sub">Intelligenze ibride come team di lavoro</div></div>
   <div class="body two-col">
     <h2 class="h-section">CHI SIAMO</h2>
+    <div class="leadcols">
     <p class="lead">Il laboratorio che viene proposto è il frutto dell'esperienza didattica e dei tentativi di co-progettazione interdisciplinare acquisiti negli ultimi anni presso le classi del liceo scientifico Baldessano-Roccati di Carmagnola. A coronamento di questa “esperienza sul campo” si è aggiunta nella pratica didattica degli ultimi due anni la collaborazione con l'AI.</p>
     <p class="lead">Centrali nella nostra ricerca sono stati due assunti fondamentali: la concezione interdisciplinare della conoscenza, e le cosiddette intelligenze ibride, intese come configurazioni dinamiche in cui intelligenza umana, competenze disciplinari, gruppo di lavoro, strumenti digitali e AI collaborano alla costruzione di soluzioni progettuali. Appare evidente che i due aspetti sono tra loro intimamente legati.</p>
+    </div>
   </div>
   <div class="footer"><span class="people" aria-hidden="true"></span></div>
 </div></section>
@@ -170,8 +172,10 @@
   <div class="pagehead"><span class="bubbles" aria-hidden="true"></span><span class="wordmark" role="img" aria-label="ABC PROF!"></span><span class="ls" role="img" aria-label="Liceo Scientifico Baldessano-Roccati"></span></div>
   <div class="body two-col">
     <h2 class="h-section top"><b>FILOSOFIA DEL PROGETTO:</b> co-progettazione interdisciplinare e collaborazione con AI.</h2>
+    <div class="leadcols">
     <p class="lead">Co-progettare significa tenere conto che i problemi reali raramente si presentano secondo i confini rigidi delle materie scolastiche, richiedendo piuttosto connessioni, attraversamenti e integrazioni tra linguaggi diversi. In questa direzione si collocano gli appelli alle istituzioni scolastiche a superare la frammentazione dei saperi, unitamente all'adozione di un approccio interdisciplinare come pratica teorica e operativa di relazione tra le discipline (ad esempio gli studi di Klein J.T., 1990, e Morin E., 1999).</p>
     <p class="lead">La collaborazione con AI si collega agli studi sulla cognizione distribuita e sulla mente estesa, secondo i quali il pensiero non è confinato nel singolo individuo, ma si sviluppa attraverso l'interazione con strumenti, ambienti e altri soggetti. Le recenti ricerche sulla <i>hybrid intelligence</i> interpretano l'AI non come semplice tool da usare all'occorrenza, e nemmeno come processo di sostituzione dell'intelligenza umana, ma come sua estensione collaborativa (ad esempio le ricerche di Akata, Z. et al., 2020, e Dellermann D. et al., 2019).</p>
+    </div>
   </div>
   <div class="footer"><span class="people" aria-hidden="true"></span></div>
 </div></section>
@@ -264,16 +268,18 @@
   <div class="body">
     <div class="contact-box">
       <div class="person">
-        <p class="name"><b>Sara Gaido</b>, docente di matematica e fisica</p>
-        <p>I.I.S. Baldessano-Roccati, Carmagnola</p>
+        <p class="name"><b>Sara Gaido</b></p>
+        <p class="role">docente di matematica e fisica</p>
+        <p>I.I.S. <span class="nowrap">Baldessano-Roccati</span>, Carmagnola</p>
         <p>Liceo scientifico tradizionale e delle scienze applicate</p>
-        <p class="mail">gaido.sara@baldessano.roccati.edu.it</p>
+        <p class="mail">gaido.sara@<wbr>baldessano.roccati.edu.it</p>
       </div>
       <div class="person">
-        <p class="name"><b>Fulvio Giuglini</b>, docente di disegno e storia dell'arte</p>
-        <p>I.I.S. Baldessano-Roccati, Carmagnola</p>
+        <p class="name"><b>Fulvio Giuglini</b></p>
+        <p class="role">docente di disegno e storia dell'arte</p>
+        <p>I.I.S. <span class="nowrap">Baldessano-Roccati</span>, Carmagnola</p>
         <p>Liceo scientifico tradizionale e delle scienze applicate</p>
-        <p class="mail">giuglini.fulvio@baldessano.roccati.edu.it</p>
+        <p class="mail">giuglini.fulvio@<wbr>baldessano.roccati.edu.it</p>
       </div>
     </div>
   </div>
