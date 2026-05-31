@@ -130,16 +130,16 @@
     .ls{width:clamp(50px,4.2vw,68px)}
     .corso{font-size:1.05rem}
     .banner{margin-left:calc(-1 * clamp(48px,7vw,120px));margin-right:calc(-1 * clamp(48px,7vw,120px));
-            padding:clamp(14px,2vh,22px) clamp(48px,7vw,120px);margin-top:clamp(12px,1.8vh,22px)}
-    .banner h1{font-size:clamp(2.1rem,3.6vw,3.1rem)}
-    .banner .sub{font-size:clamp(1.3rem,2.3vw,1.9rem)}
+            padding:clamp(10px,1.5vh,16px) clamp(48px,7vw,120px);margin-top:clamp(8px,1.2vh,16px)}
+    .banner h1{font-size:clamp(1.85rem,2.9vw,2.5rem)}
+    .banner .sub{font-size:clamp(1.15rem,1.9vw,1.55rem)}
     .body{max-width:1180px;width:100%;margin-left:auto;margin-right:auto}
-    .h-section,.h-step{font-size:clamp(1.5rem,2.2vw,2rem);margin-top:clamp(8px,1.4vh,18px)}
+    .h-section,.h-step,.h-section.top{font-size:clamp(1.45rem,2.1vw,1.9rem);margin-top:clamp(6px,1.2vh,16px)}
     p.lead{font-size:clamp(1.12rem,1.35vw,1.32rem)}
     ul.flat>li,ol.steps>li{font-size:clamp(1.1rem,1.3vw,1.3rem)}
-    /* two columns done on the LISTS / paragraph wrapper (no column-span: avoids overlap bugs) */
-    .body ul.flat,.leadcols{column-count:2;column-gap:clamp(40px,5vw,80px)}
-    .body ul.flat>li,.leadcols p.lead{break-inside:avoid}
+    /* two columns on the LISTS / paragraph wrapper (no column-span: avoids overlap bugs) */
+    .body>ul.flat,.leadcols,.cols{column-count:2;column-gap:clamp(40px,5vw,80px)}
+    .body>ul.flat>li,.cols li,.leadcols p.lead{break-inside:avoid}
     /* contacts side by side */
     .contact-box{display:flex;gap:clamp(30px,5vw,70px);text-align:left}
     .contact-box .person{flex:1;margin:0}
@@ -242,21 +242,24 @@
   <div class="pagehead"><span class="bubbles" aria-hidden="true"></span><span class="wordmark" role="img" aria-label="ABC PROF!"></span><span class="ls" role="img" aria-label="Liceo Scientifico Baldessano-Roccati"></span></div>
   <div class="body two-col">
     <h3 class="h-step">STEP 4: Come fare quando si è a corto di idee</h3>
-    <ul class="flat">
-      <li>Obiettivo: come far entrare AI nel cuore della progettazione didattica;</li>
-      <li>Approfondimento su cosiddetto “prompt efficace”;</li>
-      <li>Suddivisione del gruppo in coppie o terne;</li>
-      <li>processo di progettazione guidato passo passo attraverso la formulazione dei diversi prompt:
-        <ol class="steps">
-          <li>Ricognizione disciplinare (individuare, per ciascuna materia, i nuclei di contenuto più coerenti con il target previsto);</li>
-          <li>Connessioni (mettere in relazione i nuclei disciplinari e individuare i temi trasversali capaci di collegare più materie);</li>
-          <li>Potenziale laboratoriale (per ogni tema trasversale, individuare che tipo di laboratorio potrebbe nascere);</li>
-          <li>Ruolo dell'AI (individuare in quali momenti l'AI può aiutare i docenti: brainstorming, costruzione della scaletta, adattamento per livelli diversi, domande guida, materiali semplificati, feedback, ecc);</li>
-          <li>Produzione di griglie di valutazione, collegamenti con educazione civica e attualità, didattica orientativa, ecc.</li>
-        </ol>
-      </li>
-      <li>Esito: sperimentare una collaborazione avanzata con AI.</li>
-    </ul>
+    <div class="cols">
+      <ul class="flat">
+        <li>Obiettivo: come far entrare AI nel cuore della progettazione didattica;</li>
+        <li>Approfondimento su cosiddetto “prompt efficace”;</li>
+        <li>Suddivisione del gruppo in coppie o terne;</li>
+        <li>processo di progettazione guidato passo passo attraverso la formulazione dei diversi prompt:</li>
+      </ul>
+      <ol class="steps">
+        <li>Ricognizione disciplinare (individuare, per ciascuna materia, i nuclei di contenuto più coerenti con il target previsto);</li>
+        <li>Connessioni (mettere in relazione i nuclei disciplinari e individuare i temi trasversali capaci di collegare più materie);</li>
+        <li>Potenziale laboratoriale (per ogni tema trasversale, individuare che tipo di laboratorio potrebbe nascere);</li>
+        <li>Ruolo dell'AI (individuare in quali momenti l'AI può aiutare i docenti: brainstorming, costruzione della scaletta, adattamento per livelli diversi, domande guida, materiali semplificati, feedback, ecc);</li>
+        <li>Produzione di griglie di valutazione, collegamenti con educazione civica e attualità, didattica orientativa, ecc.</li>
+      </ol>
+      <ul class="flat">
+        <li>Esito: sperimentare una collaborazione avanzata con AI.</li>
+      </ul>
+    </div>
   </div>
   <div class="footer"><span class="people" aria-hidden="true"></span></div>
 </div></section>
